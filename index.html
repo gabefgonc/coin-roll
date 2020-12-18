@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Roll</title>
+</head>
+<body>
+    <div id="title-container"><h1 id="title">GIRAR A MOEDA</h1></div>
+    <div id="input-times">
+        Digite o número de vezes a jogar:
+        <input type="number" id="times">
+    </div>
+    <div id="input-percentage">
+        Digite a porcentagem para cair cara: 
+        <input type="number" id="percentage">
+        <button id="go">Girar A Moeda</button>
+    </div>
+    <div id="result">
+        <p id="cara"></p>
+        <p id="coroa"></p>
+    </div>
+    <style>
+        #result#cara{
+            color: coral;
+            font-weight: bold;
+        }
+
+        #result#coroa{
+            color: blueviolet;
+            font-weight: bold;
+        }
+
+        #title-container{
+            color: white;
+            background-color: #eb4034;
+            height: 60px;
+        }
+        #title{
+            text-align: center;
+        }
+        body{
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #input-times{
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #input-percentage{
+            font-weight: bold;
+            display: inline;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function getResult(){
+            const input = document.getElementById("percentage");
+            const percentage = input.value;
+            const random = Math.random() * 100;
+            if(random < percentage){
+                return 0;
+            }else{
+                return 1;
+            }
+        }
+        document.getElementById("go").onclick = () => {
+
+            const times = document.getElementById("times").value;
+            var caraCount = 0;
+            var coroaCount = 0;
+            for(let i = 0; i < times; i++){
+                if(getResult() == 0){
+                    caraCount++;
+                }
+                if(getResult() == 1){
+                    coroaCount++
+                }
+            }
+
+            const cara = document.getElementById("cara")
+            cara.innerHTML = `Número de caras: ${caraCount}`
+
+            const coroa = document.getElementById("coroa")
+            coroa.innerHTML = `Numero de coroas: ${coroaCount}`
+        };
+    </script>
+</body>
+</html>
