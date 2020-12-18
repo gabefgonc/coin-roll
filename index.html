@@ -69,10 +69,11 @@
             var caraCount = 0;
             var coroaCount = 0;
             for(let i = 0; i < times; i++){
-                if(getResult() == 0){
+                const number = getResult()
+                if(number == 0){
                     caraCount++;
                 }
-                if(getResult() == 1){
+                if(number == 1){
                     coroaCount++
                 }
             }
